@@ -44,7 +44,7 @@ public class Tokenizer {
         Pos startpos = it.currentPos();
         int sum = 0;
         // 直到查看下一个字符不是数字为止:
-        while(Character.isDigit(it.peekChar())){
+        while(Character.isDigit(it.peekChar)){
             sum = sum*10;
             sum += it.nextChar()-'0';
         }
