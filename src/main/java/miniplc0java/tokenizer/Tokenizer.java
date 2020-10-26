@@ -62,7 +62,7 @@ public class Tokenizer {
         // 请填空：
         Pos startpos = it.currentPos();
         
-        StringBuffer nowToken = new StringBuffer(it.peekChar());
+        StringBuffer nowToken = new StringBuffer();
         // 直到查看下一个字符不是数字或字母为止:
         while(Character.isAlphabetic(it.peekChar())||Character.isDigit(it.peekChar())){
             String s = String.valueOf(it.nextChar());
