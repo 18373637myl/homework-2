@@ -49,7 +49,6 @@ public class Tokenizer {
             sum += it.nextChar()-'0';
         }
         // -- 前进一个字符，并存储这个字符
-        char next = it.nextChar();
         //
         // 解析存储的字符串为无符号整数
         return new Token(TokenType.Uint, sum, startpos, it.previousPos());
