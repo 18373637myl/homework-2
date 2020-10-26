@@ -32,7 +32,7 @@ public class Tokenizer {
         char peek = it.peekChar();
         if (Character.isDigit(peek)) {
             return lexUInt();
-        } else if (Character.isAlphabetic(peek)) {
+        } else if (Character.isLetter(peek)) {
             return lexIdentOrKeyword();
         } else {
             return lexOperatorOrUnknown();
@@ -63,7 +63,7 @@ public class Tokenizer {
         
         StringBuffer nowToken = new StringBuffer();
         // 直到查看下一个字符不是数字或字母为止:
-        while(Character.isAlphabetic(it.peekChar())||Character.isDigit(it.peekChar())){
+        while(Character.isLetter(it.peekChar())||Character.isDigit(it.peekChar())){
             String s = String.valueOf(it.nextChar());
             nowToken.append(s);
         }
