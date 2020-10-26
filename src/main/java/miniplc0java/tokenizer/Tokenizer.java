@@ -42,16 +42,16 @@ public class Tokenizer {
     private Token lexUInt() throws TokenizeError {
         // 请填空：
         Pos startpos = it.currentPos();
-        int sum = 0;
+        StringBuffer nowToken = new StringBuffer();
         // 直到查看下一个字符不是数字为止:
-        while(Character.isDigit(it.peekChar)){
-            sum = sum*10;
-            sum += it.nextChar()-'0';
+        while(Character.isDigit(it.peekChar())){
+            String s = String.valueOf(it.nextChar());
+            nowToken.append(s);
         }
         // -- 前进一个字符，并存储这个字符
         //
         // 解析存储的字符串为无符号整数
-        return new Token(TokenType.Uint, sum, startpos, it.previousPos());
+        return new Token(TokenType.Uint, nowToken.toString(), startpos, it.previousPos());
         // 解析成功则返回无符号整数类型的token，否则返回编译错误
         //
         // Token 的 Value 应填写数字的值
