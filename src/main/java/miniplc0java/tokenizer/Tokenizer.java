@@ -50,8 +50,9 @@ public class Tokenizer {
         }
         // -- 前进一个字符，并存储这个字符
         //
+        sum = Integer.parseInt(nowToken.toString());
         // 解析存储的字符串为无符号整数
-        return new Token(TokenType.Uint, nowToken.toString(), startpos, it.previousPos());
+        return new Token(TokenType.Uint, sum, startpos, it.previousPos());
         // 解析成功则返回无符号整数类型的token，否则返回编译错误
         //
         // Token 的 Value 应填写数字的值
