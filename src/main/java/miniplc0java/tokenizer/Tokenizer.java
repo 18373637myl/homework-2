@@ -68,7 +68,6 @@ public class Tokenizer {
             nowToken.append(s);
         }
         // -- 前进一个字符，并存储这个字符
-        char next = it.nextChar();
         //
         // 尝试将存储的字符串解释为关键字
         String nowToken_s = nowToken.toString();
