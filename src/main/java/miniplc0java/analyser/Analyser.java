@@ -287,12 +287,11 @@ public final class Analyser {
                 // 如果遇到其他非终结符的 FIRST 集呢？
             }
             else if(peeked.getTokenType() == TokenType.Print){
-                expect(TokenType.LParen);
                 analyseOutputStatement();
-                expect(TokenType.RParen);
+            }
+            else if(peeked.getTokenType() == TokenType.Semicolon){
                 expect(TokenType.Semicolon);
             }
-            else if(peeked.getTokenType() == TokenType.Semicolon){}
             else {
                 // 都不是，摸了
                 break;
