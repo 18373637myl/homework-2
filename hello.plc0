@@ -1,0 +1,5 @@
+begin
+var a = 1;
+const b = 0;
+a = 2 + 3;
+end

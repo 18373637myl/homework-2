@@ -436,7 +436,8 @@ public final class Analyser {
         } else if (check(TokenType.Uint)) {
             // 是整数
             // 加载整数值
-            int value = Integer.parseInt(expect(TokenType.Uint).getValueString());
+            var num = expect(TokenType.Uint);
+            int value = Integer.valueOf(num.getValueString());
             instructions.add(new Instruction(Operation.LIT, value));
         } else if (check(TokenType.LParen)) {
             // 是表达式
