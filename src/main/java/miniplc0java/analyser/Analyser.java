@@ -255,10 +255,9 @@ public final class Analyser {
             // 下个 token 是等于号吗？如果是的话分析初始化
             if(nextIf(TokenType.Equal)!=null){
                 initialized = true;
+                analyseExpression();
             }
-
             // 分析初始化的表达式
-            analyseExpression();
 
             // 分号
             expect(TokenType.Semicolon);
@@ -284,10 +283,14 @@ public final class Analyser {
             if (peeked.getTokenType() == TokenType.Ident) {
                 // 调用相应的分析函数
                 analyseAssignmentStatement();
+                expect(TokenType.Semicolon);
                 // 如果遇到其他非终结符的 FIRST 集呢？
             }
             else if(peeked.getTokenType() == TokenType.Print){
+                expect(TokenType.LParen);
                 analyseOutputStatement();
+                expect(TokenType.RParen);
+                expect(TokenType.Semicolon);
             }
             else if(peeked.getTokenType() == TokenType.Semicolon){}
             else {
@@ -438,6 +441,9 @@ public final class Analyser {
             instructions.add(new Instruction(Operation.LIT, value));
         } else if (check(TokenType.LParen)) {
             // 是表达式
+            expect(TokenType.LParen);
+            analyseExpression();
+            expect(TokenType.RParen);
             // 调用相应的处理函数
         } else {
             // 都不是，摸了
