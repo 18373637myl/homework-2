@@ -42,15 +42,14 @@ public class Tokenizer {
     private Token lexUInt() throws TokenizeError {
         // 请填空：
         Pos startpos = it.currentPos();
-        StringBuffer nowToken = new StringBuffer();
+        int sum = 0;
         // 直到查看下一个字符不是数字为止:
         while(Character.isDigit(it.peekChar())){
-            String s = String.valueOf(it.nextChar());
-            nowToken.append(s);
+            sum = sum*10;
+            sum += it.nextChar()-'0';
         }
         // -- 前进一个字符，并存储这个字符
         //
-        int sum = Integer.parseInt(nowToken.toString());
         // 解析存储的字符串为无符号整数
         return new Token(TokenType.Uint, sum, startpos, it.previousPos());
         // 解析成功则返回无符号整数类型的token，否则返回编译错误
