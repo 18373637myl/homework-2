@@ -283,7 +283,6 @@ public final class Analyser {
             if (peeked.getTokenType() == TokenType.Ident) {
                 // 调用相应的分析函数
                 analyseAssignmentStatement();
-                expect(TokenType.Semicolon);
                 // 如果遇到其他非终结符的 FIRST 集呢？
             }
             else if(peeked.getTokenType() == TokenType.Print){
@@ -353,6 +352,7 @@ public final class Analyser {
         var nameToken = expect(TokenType.Ident);
         expect(TokenType.Equal);
         analyseExpression();
+        expect(TokenType.Semicolon);
         // 标识符是什么？
         String name = nameToken.getValueString();
         var symbol = symbolTable.get(name);
