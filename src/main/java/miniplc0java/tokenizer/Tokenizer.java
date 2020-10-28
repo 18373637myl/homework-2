@@ -61,11 +61,10 @@ public class Tokenizer {
         // 请填空：
         Pos startpos = it.currentPos();
         
-        StringBuffer nowToken = new StringBuffer();
+        StringBuilder nowToken = new StringBuilder("");
         // 直到查看下一个字符不是数字或字母为止:
         while(Character.isLetterOrDigit(it.peekChar())||Character.isDigit(it.peekChar())){
-            String s = String.valueOf(it.nextChar());
-            nowToken.append(s);
+            nowToken.append(it.nextChar());
         }
         // -- 前进一个字符，并存储这个字符
         //
